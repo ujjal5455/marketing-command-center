@@ -69,6 +69,7 @@ Uvicorn
 
 ## 📁 Project Structure
 
+```
 marketing-command-center/
 │
 ├── backend/
@@ -83,17 +84,17 @@ marketing-command-center/
 │       └── forecasting.py        # Break-Even, Ad Spend Forecast
 │
 └── frontend/
-├── index.html                # App shell + sidebar
-├── css/
-│   └── style.css             # Full design system
-└── js/
-├── app.js                # Router, modal, toast
-├── api.js                # Fetch wrapper + endpoint map
-├── paid_media.js         # Module 1 UI
-├── customer_economics.js # Module 2 UI
-├── conversion.js         # Module 3 UI
-└── forecasting.js        # Module 4 UI
-
+    ├── index.html                # App shell + sidebar
+    ├── css/
+    │   └── style.css             # Full design system
+    └── js/
+        ├── app.js                # Router, modal, toast
+        ├── api.js                # Fetch wrapper + endpoint map
+        ├── paid_media.js         # Module 1 UI
+        ├── customer_economics.js # Module 2 UI
+        ├── conversion.js         # Module 3 UI
+        └── forecasting.js        # Module 4 UI
+```
 ---
 
 ## 🚀 Run Locally
