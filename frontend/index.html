@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing Command Center</title>
+
+  <!-- Fonts: Bebas Neue (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ░░ SIDEBAR ░░ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar__brand">
+      <span class="sidebar__brand-icon">⌘</span>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-title">MCC</span>
+        <span class="sidebar__brand-sub">Command Center</span>
+      </div>
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Module navigation">
+
+      <p class="sidebar__section-label">Modules</p>
+
+      <button class="nav-item active" data-view="paid-media" aria-current="page">
+        <span class="nav-item__icon">◈</span>
+        <span class="nav-item__label">Paid Media</span>
+        <span class="nav-item__tag">4 metrics</span>
+      </button>
+
+      <button class="nav-item" data-view="customer-economics">
+        <span class="nav-item__icon">◉</span>
+        <span class="nav-item__label">Customer Economics</span>
+        <span class="nav-item__tag">3 metrics</span>
+      </button>
+
+      <button class="nav-item" data-view="conversion">
+        <span class="nav-item__icon">◐</span>
+        <span class="nav-item__label">Conversion Optim.</span>
+        <span class="nav-item__tag">2 metrics</span>
+      </button>
+
+      <button class="nav-item" data-view="forecasting">
+        <span class="nav-item__icon">◌</span>
+        <span class="nav-item__label">Forecasting</span>
+        <span class="nav-item__tag">2 tools</span>
+      </button>
+
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="sidebar__status">
+        <span class="status-dot" id="statusDot"></span>
+        <span class="status-label" id="statusLabel">Checking API…</span>
+      </div>
+      <p class="sidebar__version">v1.0.0</p>
+    </div>
+
+  </aside>
+
+  <!-- ░░ MAIN ░░ -->
+  <main class="main" id="main">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="topbar__toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar__breadcrumb">
+        <span id="breadcrumbModule">Paid Media Metrics</span>
+      </div>
+      <div class="topbar__right">
+        <span class="topbar__date" id="topbarDate"></span>
+      </div>
+    </header>
+
+    <!-- ── View: Paid Media ── -->
+    <section class="view active" id="view-paid-media">
+      <div class="view__hero">
+        <h1 class="view__title">Paid Media <em>Metrics</em></h1>
+        <p class="view__desc">Calculate ROAS, CPC, CPM, and CTR to diagnose campaign efficiency at a glance.</p>
+      </div>
+      <div class="cards-grid" id="paidMediaGrid">
+        <!-- Injected by paid_media.js -->
+      </div>
+    </section>
+
+    <!-- ── View: Customer Economics ── -->
+    <section class="view" id="view-customer-economics">
+      <div class="view__hero">
+        <h1 class="view__title">Customer <em>Economics</em></h1>
+        <p class="view__desc">Understand CAC, LTV, and their ratio to ensure your unit economics are healthy.</p>
+      </div>
+      <div class="cards-grid" id="customerEconomicsGrid">
+        <!-- Injected by customer_economics.js -->
+      </div>
+    </section>
+
+    <!-- ── View: Conversion Optimisation ── -->
+    <section class="view" id="view-conversion">
+      <div class="view__hero">
+        <h1 class="view__title">Conversion <em>Optimisation</em></h1>
+        <p class="view__desc">Measure conversion rate and cart abandonment to find and fix funnel leaks.</p>
+      </div>
+      <div class="cards-grid" id="conversionGrid">
+        <!-- Injected by conversion.js -->
+      </div>
+    </section>
+
+    <!-- ── View: Forecasting ── -->
+    <section class="view" id="view-forecasting">
+      <div class="view__hero">
+        <h1 class="view__title">Advanced <em>Forecasting</em></h1>
+        <p class="view__desc">Model break-even thresholds and project ad spend outcomes over time.</p>
+      </div>
+      <div class="cards-grid cards-grid--wide" id="forecastingGrid">
+        <!-- Injected by forecasting.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ░░ RESULT MODAL ░░ -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal">
+      <button class="modal__close" id="modalClose" aria-label="Close result">&times;</button>
+      <div class="modal__badge" id="modalBadge"></div>
+      <h2 class="modal__title" id="modalTitle"></h2>
+      <div class="modal__result-wrap">
+        <span class="modal__result-value" id="modalValue"></span>
+        <span class="modal__result-unit"  id="modalUnit"></span>
+      </div>
+      <p class="modal__formula" id="modalFormula"></p>
+      <div class="modal__divider"></div>
+      <p class="modal__interpretation" id="modalInterpretation"></p>
+      <!-- Forecast table (shown only for forecasting module) -->
+      <div class="modal__table-wrap" id="modalTableWrap" hidden>
+        <table class="forecast-table" id="forecastTable">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Ad Spend</th>
+              <th>Revenue</th>
+              <th>ROAS</th>
+              <th>Net Profit</th>
+              <th>Cum. Spend</th>
+              <th>Cum. Revenue</th>
+            </tr>
+          </thead>
+          <tbody id="forecastTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░░ TOAST NOTIFICATION ░░ -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- ░░ SCRIPTS ░░ -->
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/paid_media.js"></script>
+  <script src="js/customer_economics.js"></script>
+  <script src="js/conversion.js"></script>
+  <script src="js/forecasting.js"></script>
+
+</body>
+</html>
