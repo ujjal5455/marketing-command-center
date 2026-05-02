@@ -13,8 +13,8 @@ A comprehensive suite of calculation tools for digital marketers — built with 
 
 | Layer | URL |
 |---|---|
-| **Frontend** | https://your-name.netlify.app |
-| **API Docs** | https://your-api.onrender.com/docs |
+| **Frontend** | https://mcc-command-center.netlify.app |
+| **API Docs** | https://marketing-command-center-api.onrender.com/docs |
 
 ---
 
