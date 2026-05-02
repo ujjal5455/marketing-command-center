@@ -14,12 +14,12 @@
 'use strict';
 
 // ── Configuration ─────────────────────────────────────────────
-const API_BASE    = 'http://localhost:8000/api';
+const API_BASE    = 'https://marketing-command-center-api.onrender.com/api';
 const API_TIMEOUT = 10_000;   // 10 s per request
 const MAX_RETRIES = 1;        // retry once on network error
 
 // Expose base so app.js health check can reference root
-window.MCC_API_BASE = 'http://localhost:8000';
+window.MCC_API_BASE = 'https://marketing-command-center-api.onrender.com';
 
 // ── Internal: single fetch attempt ───────────────────────────
 async function _fetchOnce(endpoint, body, signal) {
